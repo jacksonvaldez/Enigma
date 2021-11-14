@@ -34,7 +34,8 @@ class Enigma
   end
 
   def shift(char, shift_num)
-
+    index = (@char_set.index(char) + shift_num) % @char_set.length
+    @char_set[index]
   end
 
   def shifts(key, date)

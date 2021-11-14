@@ -37,7 +37,7 @@ describe Enigma do
 
   describe '#shift' do
     it 'shifts a single char by given amount' do
-      expect(@enigma.shift("d", 5)).to eq("i")
+      expect(@enigma.shift("z", 5)).to eq("d")
     end
   end
 
