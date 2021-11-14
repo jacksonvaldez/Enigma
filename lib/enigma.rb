@@ -9,7 +9,7 @@ class Enigma
     @char_set = ("a".."z").to_a << " "
   end
 
-  def encrypt(plain_text, key, date)
+  def encrypt(plain_text, key = random_key, date = todays_date)
     counter = -1
     shifts = shifts(key, date)
     cipher_text = plain_text.chars.map do |char|
@@ -23,7 +23,7 @@ class Enigma
     {encryption: cipher_text, key: key, date: date}
   end
 
-  def decrypt(cipher_text, key, date)
+  def decrypt(cipher_text, key, date = todays_date)
     counter = -1
     shifts = shifts(key, date)
     plain_text = cipher_text.chars.map do |char|
