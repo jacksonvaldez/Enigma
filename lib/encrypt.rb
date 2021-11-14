@@ -4,7 +4,7 @@ input = File.open(ARGV[0], 'r')
 output = File.open(ARGV[1], 'w')
 
 enigma = Enigma.new
-encryption = enigma.encrypt(input.read)
+encryption = enigma.encrypt(input.read + " end")
 cipher_text = encryption[:encryption]
 output.write(cipher_text)
 
