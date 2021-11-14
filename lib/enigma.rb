@@ -7,13 +7,13 @@ class Enigma
 
   def encrypt(plain_text, key = random_key, date = todays_date)
     shifts = shifts(key, date)
-    cipher_text = self.shift_text(plain_text, shifts)
+    cipher_text = shift_text(plain_text, shifts)
     {encryption: cipher_text, key: key, date: date}
   end
 
   def decrypt(cipher_text, key, date = todays_date)
     shifts = shifts(key, date).map { |shift| shift * -1 }
-    plain_text = self.shift_text(cipher_text, shifts)
+    plain_text = shift_text(cipher_text, shifts)
     {decryption: plain_text, key: key, date: date}
   end
 
