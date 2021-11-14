@@ -13,14 +13,28 @@ class Enigma
     counter = -1
     shifts = shifts(key, date)
     cipher_text = plain_text.chars.map do |char|
-      counter += 1
-      shift(char, shifts[counter % 4])
+      if @char_set.include?(char)
+        counter += 1
+        shift(char, shifts[counter % 4])
+      else
+        char
+      end
     end.join
     {encryption: cipher_text, key: key, date: date}
   end
 
   def decrypt(cipher_text, key, date)
-
+    # counter = -1
+    # shifts = shifts(key, date)
+    # plain_text = cipher_text.chars.map do |char|
+    #   if @char_set.include?(char)
+    #     counter += 1
+    #     shift(char, shifts[counter % 4] * -1)
+    #   else
+    #     char
+    #   end
+    # end.join
+    # {decryption: plain_text, key: key, date: date}
   end
 
   def random_key
