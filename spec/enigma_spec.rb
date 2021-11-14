@@ -38,7 +38,6 @@ describe Enigma do
         key: "08304"
       }
       expect(@enigma.crack("vjqtbeaweqihssi", "291018")).to eq(expected)
-      expect(@enigma.crack("vjqtbeaweqihssi")).to eq(expected)
     end
   end
 
