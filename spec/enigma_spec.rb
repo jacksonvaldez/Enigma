@@ -1,5 +1,6 @@
-require './lib/enigma'
 require 'spec_helper'
+require './lib/enigma'
+
 
 describe Enigma do
 
