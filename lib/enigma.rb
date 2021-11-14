@@ -1,12 +1,13 @@
 require 'date'
 
+
 class Enigma
 
-  def self.encrypt(plaintext, key, date)
+  def encrypt(plain_text, key, date)
 
   end
 
-  def self.decrypt(ciphertext, key, date)
+  def decrypt(cipher_text, key, date)
 
   end
 
