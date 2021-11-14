@@ -42,6 +42,18 @@ describe Enigma do
     end
   end
 
+  describe '#shift_char' do
+    it 'shifts a single char by given amount' do
+      expect(@enigma.shift_char("z", 5)).to eq("d")
+    end
+  end
+
+  describe '#shifts' do
+    it 'returns an array of the shifts from given ket and date' do
+      expect(@enigma.shifts("02715", "040895")).to eq([3, 27, 73, 20])
+    end
+  end
+
   describe '#random_key' do
     it 'returns a random key' do
       expect(@enigma.random_key.length).to eq(5)
@@ -53,18 +65,6 @@ describe Enigma do
     it 'returns todays date' do
       expect(@enigma.todays_date.length).to eq(6)
       expect(@enigma.todays_date.to_i > 0).to eq(true)
-    end
-  end
-
-  describe '#shift' do
-    it 'shifts a single char by given amount' do
-      expect(@enigma.shift("z", 5)).to eq("d")
-    end
-  end
-
-  describe '#shifts' do
-    it 'returns an array of the shifts from given ket and date' do
-      expect(@enigma.shifts("02715", "040895")).to eq([3, 27, 73, 20])
     end
   end
 

@@ -24,19 +24,11 @@ class Enigma
   def shift_text(text, shifts)
     counter = -1
     text.chars.map do |char|
-      @char_set.include?(char) ? shift(char, shifts[(counter += 1) % 4]) : char
+      @char_set.include?(char) ? shift_char(char, shifts[(counter += 1) % 4]) : char
     end.join
   end
 
-  def random_key
-    rand(0..99999).to_s.rjust(5, '0')
-  end
-
-  def todays_date
-    Date.today.strftime('%d%m%y')
-  end
-
-  def shift(char, shift_num)
+  def shift_char(char, shift_num)
     index = (@char_set.index(char) + shift_num) % @char_set.length
     @char_set[index]
   end
@@ -45,6 +37,14 @@ class Enigma
     keys = key.chars.each_cons(2).map { |char_x, char_y| (char_x + char_y).to_i }
     offsets = date.to_i.pow(2).to_s.chars[-4..-1].map { |str| str.to_i }
     [keys, offsets].transpose.map { |key, offset| key + offset }
+  end
+
+  def random_key
+    rand(0..99999).to_s.rjust(5, '0')
+  end
+
+  def todays_date
+    Date.today.strftime('%d%m%y')
   end
 
 end
