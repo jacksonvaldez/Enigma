@@ -16,11 +16,11 @@ describe Enigma do
   describe '#encrypt' do
     it 'returns a hash with cipher text, key, and date' do
       expected = {
-        encryption: "keder ohulw",
+        encryption: "keder ohulw!tlmsvrb",
         key: "02715",
         date: "040895"
       }
-      expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
+      expect(@enigma.encrypt("hello world! im bob", "02715", "040895")).to eq(expected)
     end
   end
 
