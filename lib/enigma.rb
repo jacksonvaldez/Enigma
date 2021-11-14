@@ -10,15 +10,13 @@ class Enigma
   end
 
   def encrypt(plain_text, key, date)
-    counter = 0
-    plain_text.chars.map do |char|
-      if @char_set.include?(char)
-        counter > 3 ? counter = 0 : counter += 1
-        self.shift(char, self.shifts[counter % 4])
-      else
-        char
-      end
-    end
+    counter = -1
+    shifts = shifts(key, date)
+    cipher_text = plain_text.chars.map do |char|
+      counter += 1
+      shift(char, shifts[counter % 4])
+    end.join
+    {encryption: cipher_text, key: key, date: date}
   end
 
   def decrypt(cipher_text, key, date)
