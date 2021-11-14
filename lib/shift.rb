@@ -14,7 +14,7 @@ module Shift
     CHARS[index]
   end
 
-  def shifts(key, date)
+  def calc_shifts(key, date)
     keys = key.chars.each_cons(2).map { |char_x, char_y| (char_x + char_y).to_i }
     offsets = date.to_i.pow(2).to_s.chars[-4..-1].map { |str| str.to_i }
     [keys, offsets].transpose.map { |key, offset| key + offset }

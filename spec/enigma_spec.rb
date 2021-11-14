@@ -55,7 +55,7 @@ describe Enigma do
 
   describe '#shifts' do
     it 'returns an array of the shifts from given ket and date' do
-      expect(@enigma.shifts("02715", "040895")).to eq([3, 27, 73, 20])
+      expect(@enigma.calc_shifts("02715", "040895")).to eq([3, 27, 73, 20])
     end
   end
 
