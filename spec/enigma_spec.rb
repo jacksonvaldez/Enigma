@@ -25,7 +25,7 @@ describe Enigma do
   end
 
   describe '#decrypt' do
-    xit 'returns a hash with plain text, key, and date' do
+    it 'returns a hash with plain text, key, and date' do
       expected = {
         decryption: "hello world",
         key: "02715",
