@@ -44,7 +44,8 @@ describe Enigma do
 
   describe '#todays_date' do
     it 'returns todays date' do
-
+      expect(@enigma.todays_date.length).to eq(6)
+      expect(@enigma.todays_date.to_i > 0).to eq(true)
     end
   end
 
