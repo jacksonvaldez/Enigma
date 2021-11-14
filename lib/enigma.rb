@@ -10,21 +10,22 @@ class Enigma
   end
 
   def encrypt(plain_text, key = random_key, date = todays_date)
-    counter = -1
     shifts = shifts(key, date)
-    cipher_text = plain_text.chars.map do |char|
-      @char_set.include?(char) ? shift(char, shifts[(counter += 1) % 4]) : char
-    end.join
+    cipher_text = self.shift_text(plain_text, shifts)
     {encryption: cipher_text, key: key, date: date}
   end
 
   def decrypt(cipher_text, key, date = todays_date)
-    counter = -1
     shifts = shifts(key, date).map { |shift| shift * -1 }
-    plain_text = cipher_text.chars.map do |char|
+    plain_text = self.shift_text(cipher_text, shifts)
+    {decryption: plain_text, key: key, date: date}
+  end
+
+  def shift_text(text, shifts)
+    counter = -1
+    text.chars.map do |char|
       @char_set.include?(char) ? shift(char, shifts[(counter += 1) % 4]) : char
     end.join
-    {decryption: plain_text, key: key, date: date}
   end
 
   def random_key
