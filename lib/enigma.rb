@@ -54,9 +54,7 @@ class Enigma
   def shifts(key, date)
     keys = key.chars.each_cons(2).map { |char_x, char_y| (char_x + char_y).to_i }
     offsets = date.to_i.pow(2).to_s.chars[-4..-1].map { |e| e.to_i }
-    shifts = keys.each_with_index.map do |element, index|
-      element + offsets[index]
-    end
+    keys.zip(offsets).map { |key, offset| key + offset }
   end
 
 end
