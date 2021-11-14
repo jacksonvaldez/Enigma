@@ -36,6 +36,12 @@ describe Enigma do
     end
   end
 
+  describe '#shift_text' do
+    it 'shifts a string using given shifts' do
+      expect(@enigma.shift_text("hello world!", [1, 2, 3, 4])).to eq("igoppbzssng!")
+    end
+  end
+
   describe '#random_key' do
     it 'returns a random key' do
       expect(@enigma.random_key.length).to eq(5)
