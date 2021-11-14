@@ -14,7 +14,7 @@ describe Enigma do
   end
 
   describe '#encrypt' do
-    xit 'returns a hash with cipher text, key, and date' do
+    it 'returns a hash with cipher text, key, and date' do
       expected = {
         encryption: "keder ohulw",
         key: "02715",
