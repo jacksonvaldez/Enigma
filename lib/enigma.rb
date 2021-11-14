@@ -1,39 +1,28 @@
 require 'date'
+require './lib/shift'
 
 
 class Enigma
-
-  attr_reader :char_set
-
-  def initialize
-    @char_set = ("a".."z").to_a << " "
-  end
+  include Shift
 
   def encrypt(plain_text, key = random_key, date = todays_date)
-    counter = -1
     shifts = shifts(key, date)
-    cipher_text = plain_text.chars.map do |char|
-      if @char_set.include?(char)
-        counter += 1
-        shift(char, shifts[counter % 4])
-      else
-        char
-      end
-    end.join
+    cipher_text = shift_text(plain_text, shifts)
     {encryption: cipher_text, key: key, date: date}
   end
 
   def decrypt(cipher_text, key, date = todays_date)
-    counter = -1
-    shifts = shifts(key, date)
-    plain_text = cipher_text.chars.map do |char|
-      if @char_set.include?(char)
-        counter += 1
-        shift(char, shifts[counter % 4] * -1)
-      else
-        char
-      end
-    end.join
+    shifts = shifts(key, date).map { |shift| shift * -1 }
+    plain_text = shift_text(cipher_text, shifts)
+    {decryption: plain_text, key: key, date: date}
+  end
+
+  def crack(cipher_text, date = todays_date)
+    plain_text = ''
+    until plain_text[-4..-1] == ' end'
+      shifts = shifts(key = self.random_key, date).map { |shift| shift * -1 }
+      plain_text = self.shift_text(cipher_text, shifts)
+    end
     {decryption: plain_text, key: key, date: date}
   end
 
@@ -42,21 +31,7 @@ class Enigma
   end
 
   def todays_date
-    date = Date.today.to_s.split("-")
-    "#{date[2]}" + "#{date[1]}" + "#{date[0][2..3]}"
-  end
-
-  def shift(char, shift_num)
-    index = (@char_set.index(char) + shift_num) % @char_set.length
-    @char_set[index]
-  end
-
-  def shifts(key, date)
-    keys = key.chars.each_cons(2).map { |char_x, char_y| (char_x + char_y).to_i }
-    offsets = date.to_i.pow(2).to_s.chars[-4..-1].map { |e| e.to_i }
-    shifts = keys.each_with_index.map do |element, index|
-      element + offsets[index]
-    end
+    Date.today.strftime('%d%m%y')
   end
 
 end
