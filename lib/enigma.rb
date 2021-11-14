@@ -42,8 +42,7 @@ class Enigma
   end
 
   def todays_date
-    date = Date.today.to_s.split("-")
-    "#{date[2]}" + "#{date[1]}" + "#{date[0][2..3]}"
+    Date.today.strftime('%d%m%y')
   end
 
   def shift(char, shift_num)
