@@ -38,11 +38,12 @@ class Enigma
   end
 
   def random_key
-
+    rand(0..99999).to_s.rjust(5, '0')
   end
 
-  def random_date
-
+  def todays_date
+    date = Date.today.to_s.split("-")
+    "#{date[2]}" + "#{date[1]}" + "#{date[0][2..3]}"
   end
 
   def shift(char, shift_num)
