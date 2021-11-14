@@ -35,6 +35,12 @@ describe Enigma do
     end
   end
 
+  describe '#shift' do
+    it 'shifts a single char by given amount' do
+      expect(@enigma.shift("d", 5)).to eq("i")
+    end
+  end
+
   describe '#shifts' do
     it 'returns an array of the shifts from given ket and date' do
       expect(@enigma.shifts("02715", "040895")).to eq([3, 27, 73, 20])
