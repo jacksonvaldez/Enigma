@@ -20,9 +20,9 @@ class Enigma
 
   def decrypt(cipher_text, key, date = todays_date)
     counter = -1
-    shifts = shifts(key, date)
+    shifts = shifts(key, date).map { |shift| shift * -1 }
     plain_text = cipher_text.chars.map do |char|
-      @char_set.include?(char) ? shift(char, shifts[(counter += 1) % 4] * -1) : char
+      @char_set.include?(char) ? shift(char, shifts[(counter += 1) % 4]) : char
     end.join
     {decryption: plain_text, key: key, date: date}
   end
