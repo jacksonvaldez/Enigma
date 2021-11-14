@@ -35,6 +35,19 @@ describe Enigma do
     end
   end
 
+  describe '#random_key' do
+    it 'returns a random key' do
+      expect(@enigma.random_key.length).to eq(5)
+      expect(@enigma.random_key.to_i > 0).to eq(true)
+    end
+  end
+
+  describe '#todays_date' do
+    it 'returns todays date' do
+
+    end
+  end
+
   describe '#shift' do
     it 'shifts a single char by given amount' do
       expect(@enigma.shift("z", 5)).to eq("d")
