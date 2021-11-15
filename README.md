@@ -16,3 +16,11 @@ __How To Use__
 4. `<date>` format: DDMMYY
 5. `<key>` format: Any 5 digit number (00053, 38563, 09574)
 
+
+
+__Self Assessment__
+1. Functionality (4): The program completes all of Iteration 4.
+2. Object Oriented Programming(3): Program uses a module, but it could have used a better class/module structure from the beginning.
+3. Ruby Conventions and Mechanics(4): All methods are named very well and anyone reading the code could understand what their purpose is. Syntax and indenting is consistent. The maximum lines of code for a single method was 6. The entire program is only 35 lines of code according to SimpleCov.
+4. Test Driven Development(3): All tests were written before the code. Edge cases are addressed for any components of the program that are interacted with by a user (CLI). SimpleCov results are 100% coverage. But there could have been more tests for smaller functionalities and mocks/stubs were not used.
+**Overall Score:** 3.5
